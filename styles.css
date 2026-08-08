@@ -12,3 +12,15 @@
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
 }
+
+/* Keep site name/brand white in all modes */
+.brand,
+.brand:link,
+.brand:visited,
+.brand:hover,
+.brand:active,
+.brand strong {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
