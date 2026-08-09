@@ -379,3 +379,65 @@
 html {
     color-scheme: normal;
 }
+
+
+/* === Final White Executive Navigation Bar === */
+.executive-topbar {
+    background: #ffffff !important;
+    color: #111827 !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,.12) !important;
+}
+
+.executive-brand,
+.executive-brand strong,
+.executive-brand strong span {
+    color: #111827 !important;
+    -webkit-text-fill-color: #111827 !important;
+}
+
+.executive-brand strong span:last-child {
+    color: #1565c0 !important;
+    -webkit-text-fill-color: #1565c0 !important;
+}
+
+.executive-topbar nav a,
+.executive-topbar nav a:link,
+.executive-topbar nav a:visited {
+    color: #111827 !important;
+    -webkit-text-fill-color: #111827 !important;
+}
+
+.executive-topbar nav a:hover,
+.executive-topbar nav a.active,
+.executive-topbar nav a:active {
+    color: #1565c0 !important;
+    -webkit-text-fill-color: #1565c0 !important;
+    border-color: #1565c0 !important;
+}
+
+.top-connect,
+.top-connect:link,
+.top-connect:visited {
+    color: #1565c0 !important;
+    -webkit-text-fill-color: #1565c0 !important;
+    border-color: #1565c0 !important;
+    background: transparent !important;
+}
+
+.top-connect:hover,
+.top-connect:active {
+    background: #1565c0 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+.executive-topbar .menu-button {
+    color: #111827 !important;
+}
+
+@media(max-width:950px) {
+    .executive-topbar nav {
+        background: #ffffff !important;
+        box-shadow: 0 8px 16px rgba(0,0,0,.10);
+    }
+}
