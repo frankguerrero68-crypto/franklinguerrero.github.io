@@ -11,53 +11,39 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="topbar">
+  <header class="topbar executive-topbar">
     <div class="shell nav">
-      <a class="brand" href="#home">
-        <strong><span class="brand-first">Franklin</span> <span class="brand-last">Guerrero</span></strong>
-        <span>IT Executive Leader&nbsp;&nbsp;|&nbsp;&nbsp;Strategic Innovator</span>
+      <a class="brand executive-brand" href="#home" aria-label="Franklin Guerrero home">
+        <strong><span>FRANKLIN</span><span>GUERRERO</span></strong>
       </a>
-
       <button class="menu-button" aria-expanded="false" aria-controls="site-nav">☰</button>
-
       <nav id="site-nav">
         <a class="active" href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#expertise">Expertise</a>
         <a href="#experience">Experience</a>
         <a href="#achievements">Achievements</a>
-        <a href="#education">Education</a>
         <a href="#contact">Contact</a>
       </nav>
+      <a class="top-connect" href="#contact">Let's Connect</a>
     </div>
   </header>
 
   <main>
-    <section id="home" class="hero">
+    <section id="home" class="hero executive-hero">
       <div class="hero-overlay"></div>
-      <div class="shell hero-layout">
-        <div class="portrait-frame">
-          <!-- Replace this block with:
-          <img src="assets/profile.jpg" alt="Franklin Guerrero">
-          -->
-          <img src="assets/profile.jpg" alt="Professional headshot" onerror="this.onerror=null; this.src='assets/profile-placeholder.svg';">
-        </div>
-
-        <div class="hero-copy">
-          <h1>Visionary IT Leader.<br><span class="strategic-mint-green">Strategic Partner.</span><br>Results Driven.</h1>
+      <div class="shell executive-hero-layout">
+        <div class="hero-copy executive-copy">
+          <h1>Visionary IT Leader.<br>Strategic Partner.<br>Results Driven.</h1>
           <div class="accent-line"></div>
-          <p>
-            Delivering innovative technology solutions that drive business growth,
-            operational excellence, and exceptional customer experiences.
-          </p>
+          <p>I align technology, strategy, and people to lead enterprise transformation, strengthen organizations, and deliver measurable business outcomes.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="assets/resume.pdf" download>
-              <span>⇩</span> Download Résumé
-            </a>
-            <a class="btn btn-outline" href="https://www.linkedin.com/in/itfg/" target="_blank" rel="noopener">
-              <span class="linkedin-box">in</span> Connect on LinkedIn
-            </a>
+            <a class="btn btn-primary" href="#about">Learn More <span aria-hidden="true">→</span></a>
+            <a class="btn btn-outline" href="https://www.linkedin.com/in/itfg/" target="_blank" rel="noopener"><span class="linkedin-box">in</span> Connect on LinkedIn <span aria-hidden="true">→</span></a>
           </div>
+        </div>
+        <div class="executive-portrait" aria-hidden="true">
+          <img src="assets/profile-transparent.png" alt="">
         </div>
       </div>
     </section>

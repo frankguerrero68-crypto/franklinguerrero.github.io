@@ -75,3 +75,253 @@
         box-shadow: 0 8px 16px rgba(0,0,0,.10);
     }
 }
+
+/* === 2026 Executive Hero Refresh === */
+.executive-topbar{position:absolute;top:0;left:0;right:0;background:transparent!important;color:#fff!important;box-shadow:none!important;z-index:50}
+.executive-topbar .nav{min-height:92px}
+.executive-brand{display:block!important;text-decoration:none}
+.executive-brand strong{display:flex;flex-direction:column;line-height:1.02;font-size:1.15rem;letter-spacing:.16em;color:#fff!important;-webkit-text-fill-color:#fff!important}
+.executive-brand strong span:last-child{color:#1592ff!important;-webkit-text-fill-color:#1592ff!important;margin-top:4px}
+.executive-topbar nav{gap:34px}
+.executive-topbar nav a,.executive-topbar nav a:link,.executive-topbar nav a:visited{color:#fff!important;-webkit-text-fill-color:#fff!important;text-transform:none;font-size:.82rem;font-weight:600;padding:34px 0 22px}
+.executive-topbar nav a:hover,.executive-topbar nav a.active{color:#19a0ff!important;-webkit-text-fill-color:#19a0ff!important;border-color:#19a0ff!important}
+.top-connect{color:#fff;text-decoration:none;border:1px solid #268cf1;border-radius:5px;padding:11px 18px;font-size:.82rem;font-weight:600;white-space:nowrap}
+.executive-hero{min-height:760px;background:linear-gradient(90deg,rgba(2,13,31,.98) 0%,rgba(4,25,58,.89) 43%,rgba(6,47,112,.56) 73%,rgba(2,20,46,.66) 100%),url("assets/airport.jpg") center/cover no-repeat;color:#fff}
+.executive-hero:before{background:radial-gradient(circle at 70% 38%,rgba(20,116,255,.40),transparent 34%),linear-gradient(0deg,rgba(1,10,24,.80) 0%,transparent 48%)}
+.executive-hero .hero-overlay{height:150px;background:linear-gradient(transparent,#021329)}
+.executive-hero-layout{position:relative;z-index:2;min-height:760px;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(320px,.88fr);align-items:center;gap:28px;padding-top:92px}
+.executive-copy{max-width:700px;padding:48px 0 36px}
+.hero-kicker{font-size:.82rem;font-weight:600;letter-spacing:.28em;color:#1ba3ff;margin-bottom:26px;white-space:nowrap}
+.hero-kicker span{padding:0 10px}
+.executive-copy h1{font-size:clamp(3rem,5.2vw,4.7rem);line-height:1.08;letter-spacing:-.035em;margin:0 0 24px;color:#fff}
+.executive-copy .accent-line{width:72px;height:3px;background:#168cff;margin-bottom:26px}
+.executive-copy p{max-width:610px;font-size:1.02rem;line-height:1.75;color:#e7eef8;margin:0}
+.executive-copy .hero-actions{margin-top:30px;gap:16px}
+.executive-copy .btn{min-width:180px;justify-content:space-between;padding:15px 20px;border-radius:4px;font-size:.9rem}
+.executive-copy .btn-primary{background:#0868e8;border:1px solid #0868e8;color:#fff}
+.executive-copy .btn-outline{background:rgba(1,12,30,.42);border:1px solid rgba(255,255,255,.78);color:#fff}
+.executive-portrait{align-self:end;justify-self:end;width:min(37vw,455px);height:625px;display:flex;align-items:flex-end;justify-content:center;position:relative}
+.executive-portrait:before{content:"";position:absolute;width:72%;height:55%;right:5%;top:20%;background:#1679ff;filter:blur(100px);opacity:.18}
+.executive-portrait img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 22px 24px rgba(0,0,0,.22));-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 82%,rgba(0,0,0,.9) 88%,rgba(0,0,0,.35) 96%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0%,#000 82%,rgba(0,0,0,.9) 88%,rgba(0,0,0,.35) 96%,transparent 100%)}
+@media(max-width:1050px){.executive-topbar nav{gap:20px}.top-connect{display:none}.executive-hero-layout{grid-template-columns:1.15fr .85fr}.executive-portrait{width:min(40vw,400px);height:570px}.hero-kicker{font-size:.72rem;letter-spacing:.2em}}
+@media(max-width:950px){.executive-topbar .menu-button{display:block;color:#fff!important}.executive-topbar nav{top:82px;background:#04152f!important}.executive-hero{min-height:720px}.executive-hero-layout{min-height:720px;grid-template-columns:1fr .68fr}.executive-copy h1{font-size:clamp(2.65rem,6vw,4rem)}.executive-portrait{width:330px;height:520px;margin-right:-35px}}
+@media(max-width:700px){.executive-topbar{position:absolute}.executive-topbar .nav{min-height:78px}.executive-brand strong{font-size:1rem}.executive-hero{padding:0;min-height:780px;background-position:62% center}.executive-hero-layout{min-height:780px;display:block;padding-top:115px}.executive-copy{position:relative;z-index:3;text-align:left;padding:20px 0}.hero-kicker{white-space:normal;font-size:.65rem;line-height:1.7;margin-bottom:18px}.hero-kicker span{padding:0 4px}.executive-copy h1{font-size:clamp(2.35rem,11vw,3.45rem)}.executive-copy .accent-line{margin-left:0}.executive-copy p{font-size:.94rem;max-width:92%}.executive-copy .hero-actions{justify-content:flex-start}.executive-copy .btn{min-width:0}.executive-portrait{position:absolute;right:-72px;bottom:0;width:310px;height:430px;opacity:.34;z-index:1}.executive-hero:before{background:linear-gradient(90deg,rgba(2,13,31,.98),rgba(2,13,31,.84) 65%,rgba(2,13,31,.5)),linear-gradient(0deg,rgba(1,10,24,.9),transparent 55%)}}
+
+/* === Executive hero portrait refinement: smaller, dimmer, more integrated === */
+.executive-portrait{
+    width:min(33vw,405px);
+    height:575px;
+}
+.executive-portrait:before{
+    opacity:.10;
+    filter:blur(115px);
+}
+.executive-portrait img{
+    opacity:.72;
+    filter:brightness(.72) saturate(.82) contrast(.96) drop-shadow(0 18px 20px rgba(0,0,0,.16));
+    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 68%,rgba(0,0,0,.88) 78%,rgba(0,0,0,.48) 90%,transparent 100%);
+    mask-image:linear-gradient(to bottom,#000 0%,#000 68%,rgba(0,0,0,.88) 78%,rgba(0,0,0,.48) 90%,transparent 100%);
+}
+@media(max-width:1050px){
+    .executive-portrait{width:min(36vw,365px);height:530px}
+}
+@media(max-width:950px){
+    .executive-portrait{width:300px;height:480px;margin-right:-25px}
+}
+@media(max-width:700px){
+    .executive-portrait{right:-62px;bottom:0;width:285px;height:400px;opacity:.30}
+}
+
+/* === Portrait position only: move slightly closer to hero copy === */
+@media(min-width:951px){
+    .executive-portrait{transform:translateX(-48px)}
+}
+
+/* === Portrait position only: move closer to hero copy === */
+@media(min-width:951px){
+    .executive-portrait{transform:translateX(-105px)}
+}
+
+/* === Portrait position only: raise slightly for stronger headline alignment === */
+@media(min-width:951px){
+    .executive-portrait{transform:translate(-105px,-38px)}
+}
+
+/* === Portrait position only: closer to words and slightly higher === */
+@media(min-width:951px){
+    .executive-portrait{transform:translate(-135px,-48px)}
+}
+
+
+/* Final tweak: move only the hero text/content block higher */
+@media (min-width: 951px) {
+  .hero-copy {
+    transform: translateY(-45px);
+  }
+}
+
+
+/* Final hero tightening: only headline size + portrait vertical position */
+@media (min-width: 951px) {
+  .hero h1 {
+    font-size: clamp(38px, 4.2vw, 60px);
+    line-height: 1.02;
+  }
+
+  .hero-photo {
+    transform: translateY(-45px);
+  }
+}
+
+
+/* Position-only refinement: no redesign */
+@media (min-width: 951px) {
+  .hero-copy {
+    transform: translateY(-75px);
+  }
+
+  .hero-photo {
+    transform: translateY(-80px);
+  }
+}
+
+
+/* Position-only refinement requested:
+   portrait much higher toward menu + substantially closer to hero words */
+@media (min-width: 951px) {
+  .hero-photo {
+    transform: translate(-125px, -145px);
+  }
+}
+
+
+/* Position-only refinement: move portrait dramatically higher and closer.
+   No other styling is changed. */
+@media (min-width: 951px) {
+  .hero-photo {
+    transform: translate(-230px, -235px);
+  }
+}
+
+
+/* Corrected position-only override for the live executive portrait */
+@media (min-width: 951px) {
+  .executive-portrait {
+    transform: translate(-220px, -180px);
+  }
+}
+
+
+/* Reduce only the extra hero space below the CTA buttons */
+@media (min-width: 951px) {
+  .hero {
+    min-height: 610px;
+  }
+}
+
+
+/* Corrected: reduce actual spacing after hero CTA area only */
+@media (min-width: 951px) {
+  .hero-content {
+    padding-bottom: 0 !important;
+    margin-bottom: -35px;
+  }
+
+  .hero-buttons {
+    margin-bottom: 0 !important;
+  }
+}
+
+
+/* Corrected: restore portrait placement and remove only excess bottom hero space */
+@media (min-width: 951px) {
+    .executive-hero {
+        min-height: 760px;
+    }
+
+    .executive-hero-layout {
+        min-height: 760px;
+    }
+
+    .executive-copy {
+        padding-bottom: 0;
+    }
+}
+
+
+/* === Final Executive Hero Spacing Adjustment ===
+   Reduces excess space below CTA buttons while preserving the executive layout.
+*/
+@media (min-width: 951px) {
+    .executive-hero {
+        min-height: 680px;
+    }
+
+    .executive-hero-layout {
+        min-height: 680px;
+        align-items: center;
+    }
+
+    .executive-copy {
+        padding-bottom: 0;
+        transform: translateY(-25px);
+    }
+
+    .executive-copy .hero-actions {
+        margin-bottom: 0;
+    }
+
+    .hero-overlay {
+        height: 90px;
+    }
+}
+
+
+/* === Additional Hero Space Reduction ===
+   Small additional tightening below CTA area.
+*/
+@media (min-width: 951px) {
+    .executive-hero {
+        min-height: 630px;
+    }
+
+    .executive-hero-layout {
+        min-height: 630px;
+    }
+
+    .executive-copy {
+        transform: translateY(-35px);
+    }
+}
+
+
+/* === Executive Hero Major Space Reduction ===
+   Aggressive tightening while preserving visual balance.
+*/
+@media (min-width: 951px) {
+    .executive-hero {
+        min-height: 520px;
+    }
+
+    .executive-hero-layout {
+        min-height: 520px;
+    }
+
+    .executive-copy {
+        transform: translateY(-45px);
+    }
+
+    .executive-hero .hero-overlay {
+        height: 60px;
+    }
+}
+
+
+/* === Portrait Position Correction Only ===
+   Keep compact hero exactly as-is; lower only the executive portrait.
+*/
+@media (min-width: 951px) {
+    .executive-portrait {
+        transform: translate(-220px, -70px);
+    }
+}
