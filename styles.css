@@ -32,36 +32,20 @@
 @media(max-width:950px){.hero-layout{grid-template-columns:1.05fr .95fr;gap:10px}.hero-person img{max-height:500px}.hero-values{grid-template-columns:1fr}.services-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:650px){.hero{padding:0;background-position:58% center}.hero-layout{grid-template-columns:1fr;min-height:auto}.hero-copy{padding:48px 0 10px;text-align:center}.hero-copy h1{font-size:2.55rem}.hero-person{min-height:330px}.hero-person img{max-height:350px;transform:none}.hero-values{grid-template-columns:1fr 1fr 1fr;gap:8px}.hero-values article{display:block;text-align:center}.hero-values p{font-size:.66rem}.services-grid{grid-template-columns:1fr}.services-grid article{min-height:auto}}
 
-/* Portrait crop adjustment: desktop/tablet shows Franklin from approximately the waist up. */
+/* Portrait sizing cleanup: one desktop rule, smaller waist-up composition. */
 @media (min-width: 651px) {
-  .hero-person {
-    overflow: hidden;
-  }
+  .hero-person { overflow: hidden; }
   .hero-person img {
     max-height: none;
-    height: 700px;
+    height: 590px;
     width: auto;
-    transform: translateY(115px) scale(1.08);
+    transform: translateY(70px);
     transform-origin: center bottom;
   }
 }
 @media (min-width: 1200px) {
   .hero-person img {
-    height: 735px;
-    transform: translateY(125px) scale(1.1);
-  }
-}
-
-/* Portrait sizing refinement: keep the waist-up crop, but pull Franklin back slightly. */
-@media (min-width: 651px) {
-  .hero-person img {
-    height: 650px;
-    transform: translateY(75px) scale(1);
-  }
-}
-@media (min-width: 1200px) {
-  .hero-person img {
-    height: 700px;
-    transform: translateY(125px) scale(1);
+    height: 610px;
+    transform: translateY(78px);
   }
 }
