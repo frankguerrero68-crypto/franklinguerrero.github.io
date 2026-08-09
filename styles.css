@@ -325,3 +325,57 @@
         transform: translate(-220px, -70px);
     }
 }
+
+
+/* === Final Branding Fixes ===
+   Lock button text colors against browser dark mode
+   and highlight Strategic Partner in mint green.
+*/
+
+/* Button text protection */
+.hero-actions .btn,
+.hero-actions .btn:link,
+.hero-actions .btn:visited,
+.hero-actions .btn:hover,
+.hero-actions .btn:active,
+.executive-copy .btn,
+.executive-copy .btn:link,
+.executive-copy .btn:visited,
+.executive-copy .btn:hover,
+.executive-copy .btn:active {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Primary button */
+.hero-actions .btn-primary,
+.executive-copy .btn-primary {
+    background: #0868e8 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* LinkedIn outline button */
+.hero-actions .btn-outline,
+.executive-copy .btn-outline {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* LinkedIn icon stays dark on white square */
+.linkedin-box {
+    color: #0a1a31 !important;
+    -webkit-text-fill-color: #0a1a31 !important;
+    background: #ffffff !important;
+}
+
+/* Strategic Partner headline highlight */
+.mint-text {
+    color: #98FF98 !important;
+    -webkit-text-fill-color: #98FF98 !important;
+}
+
+/* Prevent browser dark mode from recoloring the page */
+html {
+    color-scheme: normal;
+}
