@@ -469,3 +469,19 @@ html {
         transparent 100%
     );
 }
+
+
+/* === Final Portrait Opacity Adjustment: 80% === */
+.executive-portrait img {
+    opacity: .80;
+}
+
+
+/* === Final Executive Portrait Settings ===
+   Opacity: 83% | Brightness: 90% | Contrast: 103% | Saturation: 95%
+*/
+.executive-portrait img {
+    opacity: .83;
+    filter: brightness(.90) contrast(1.03) saturate(.95)
+            drop-shadow(0 18px 24px rgba(0,0,0,.22));
+}
