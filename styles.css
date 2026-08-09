@@ -485,3 +485,119 @@ html {
     filter: brightness(.90) contrast(1.03) saturate(.95)
             drop-shadow(0 18px 24px rgba(0,0,0,.22));
 }
+
+
+/* === FINAL MATCHING OVERRIDE: compact hero, white nav, mint accent ===
+   No redesign. Keeps the approved compact hero dimensions and existing text layout.
+*/
+@media (min-width: 951px) {
+    .executive-hero {
+        min-height: 520px !important;
+    }
+
+    .executive-hero-layout {
+        min-height: 520px !important;
+    }
+
+    /* Keep portrait close to headline, just a touch higher */
+    .executive-portrait {
+        transform: translate(-220px, -85px) !important;
+    }
+}
+
+/* Lock approved white navigation colors */
+.executive-topbar {
+    background: #ffffff !important;
+    color: #111827 !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,.12) !important;
+}
+
+.executive-topbar nav a,
+.executive-topbar nav a:link,
+.executive-topbar nav a:visited {
+    color: #111827 !important;
+    -webkit-text-fill-color: #111827 !important;
+}
+
+.executive-topbar nav a:hover,
+.executive-topbar nav a.active,
+.executive-topbar nav a:active {
+    color: #1565c0 !important;
+    -webkit-text-fill-color: #1565c0 !important;
+    border-color: #1565c0 !important;
+}
+
+.top-connect,
+.top-connect:link,
+.top-connect:visited {
+    color: #1565c0 !important;
+    -webkit-text-fill-color: #1565c0 !important;
+    border-color: #1565c0 !important;
+    background: transparent !important;
+}
+
+/* Lock Strategic Partner to mint green */
+.mint-text {
+    color: #98FF98 !important;
+    -webkit-text-fill-color: #98FF98 !important;
+}
+
+/* Preserve final portrait treatment */
+.executive-portrait img {
+    opacity: .83 !important;
+    filter: brightness(.90) contrast(1.03) saturate(.95)
+            drop-shadow(0 18px 24px rgba(0,0,0,.22)) !important;
+}
+
+
+/* === Portrait Position Only: move much higher ===
+   No other layout, sizing, colors, spacing, or design changes.
+*/
+@media (min-width: 951px) {
+    .executive-portrait {
+        transform: translate(-220px, -165px) !important;
+    }
+}
+
+
+/* === FINAL PORTRAIT/BOTTOM EDGE ADJUSTMENT ONLY ===
+   Keep all existing design. Let the portrait extend naturally to the hero bottom
+   and remove excess bottom space beneath the CTA area.
+*/
+@media (min-width: 951px) {
+    .executive-hero,
+    .executive-hero-layout {
+        min-height: 520px !important;
+        height: 520px !important;
+    }
+
+    .executive-hero-layout {
+        padding-bottom: 0 !important;
+    }
+
+    .executive-copy {
+        padding-bottom: 0 !important;
+    }
+
+    .executive-copy .hero-actions {
+        margin-bottom: 0 !important;
+    }
+
+    .executive-portrait {
+        align-self: end !important;
+        height: 500px !important;
+        transform: translate(-220px, 0) !important;
+        margin-bottom: 0 !important;
+    }
+
+    .executive-portrait img {
+        object-position: center bottom !important;
+        -webkit-mask-image: none !important;
+        mask-image: none !important;
+    }
+
+    .executive-hero .hero-overlay {
+        height: 0 !important;
+        display: none !important;
+    }
+}
