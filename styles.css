@@ -606,3 +606,49 @@ html {
     opacity: .85 !important;
     filter: brightness(.82) contrast(.98) saturate(.90) !important;
 }
+/* === FIX PORTRAIT POSITION ACROSS SCREEN SIZES === */
+
+/* Large desktop */
+@media (min-width: 1201px) {
+    .executive-portrait {
+        transform: translate(-220px, -145px) !important;
+    }
+}
+
+/* Smaller desktop / laptop */
+@media (min-width: 951px) and (max-width: 1200px) {
+    .executive-portrait {
+        transform: translate(-120px, -120px) !important;
+    }
+}
+
+/* Tablet / narrow browser */
+@media (min-width: 701px) and (max-width: 950px) {
+    .executive-portrait {
+        position: relative !important;
+        right: auto !important;
+        bottom: auto !important;
+
+        transform: translate(-30px, -90px) !important;
+
+        width: 300px !important;
+        height: 480px !important;
+        margin-right: 0 !important;
+    }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .executive-portrait {
+        position: absolute !important;
+
+        right: -35px !important;
+        top: 130px !important;
+        bottom: auto !important;
+
+        transform: none !important;
+
+        width: 260px !important;
+        height: 390px !important;
+    }
+}
