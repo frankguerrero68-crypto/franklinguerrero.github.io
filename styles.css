@@ -618,29 +618,22 @@ html {
     }
 }
 
-/* === Separate hero and Professional Experience images === */
+
+/* === FINAL IMAGE SEPARATION ===
+   Hero background: airport.jpg
+   Professional Experience image: airport3.jpg (set in index.html)
+*/
 .executive-hero {
     background-image:
-        linear-gradient(90deg,
+        linear-gradient(
+            90deg,
             rgba(2,13,31,.98) 0%,
             rgba(4,25,58,.89) 43%,
             rgba(6,47,112,.56) 73%,
-            rgba(2,20,46,.66) 100%),
+            rgba(2,20,46,.66) 100%
+        ),
         url("assets/airport.jpg") !important;
     background-position: center !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
-}
-
-.airport-card {
-    background-image: url("assets/airport3.jpg") !important;
-    background-position: center !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-}
-
-.airport-card .terminal,
-.airport-card .runway,
-.airport-card .plane {
-    display: none !important;
 }
