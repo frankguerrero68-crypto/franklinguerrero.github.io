@@ -603,7 +603,7 @@ html {
 }
 /* FINAL portrait fade override */
 .executive-portrait img {
-    opacity: .90 !important;
+    opacity: .60 !important;
     filter: brightness(.82) contrast(.98) saturate(.90) !important;
 }
 @media (max-width: 700px) {
