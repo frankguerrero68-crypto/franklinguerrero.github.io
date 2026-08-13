@@ -633,7 +633,7 @@ html {
             rgba(2,20,46,.66) 100%
         ),
         url("assets/airport.jpg") !important;
-    background-position: center !important;
+    background-position: center 40% !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
 }
