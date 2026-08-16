@@ -1323,3 +1323,134 @@ html {
     }
 }
 
+/* =========================================================
+   INTERACTIVE FIRST 90 DAYS PRIORITIES
+   Adds click-to-open executive priority details.
+   ========================================================= */
+
+#first-90-days{
+    position:relative;
+    overflow:visible;
+}
+
+.priority-card{
+    cursor:pointer;
+    position:relative;
+    outline:none;
+    transition:border-color .18s ease, box-shadow .18s ease, transform .18s ease, background .18s ease;
+}
+
+.priority-card:hover,
+.priority-card:focus-visible,
+.priority-card.active{
+    border-top-color:#35a6ff !important;
+    background:#f8fbff !important;
+    box-shadow:0 12px 28px rgba(5,31,66,.10);
+    transform:translateY(-2px);
+}
+
+.priority-popover{
+    position:absolute;
+    z-index:30;
+    width:min(390px,calc(100vw - 40px));
+    padding:24px 26px 24px;
+    border:1px solid #d8e5f2;
+    border-radius:9px;
+    background:#ffffff;
+    color:#0d1a35;
+    box-shadow:0 22px 55px rgba(6,32,70,.22);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translateY(6px) scale(.99);
+    transition:opacity .16s ease,transform .16s ease,visibility .16s ease;
+}
+
+.priority-popover.open{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translateY(0) scale(1);
+}
+
+.priority-popover-number{
+    color:#2d8ff0;
+    font-size:1.45rem;
+    line-height:1;
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+.priority-popover-title{
+    margin:0 30px 10px 0;
+    color:#102448;
+    font-size:1rem;
+    line-height:1.35;
+}
+
+.priority-popover-text{
+    margin:0;
+    color:#324762;
+    font-size:.78rem;
+    line-height:1.7;
+}
+
+.priority-popover-close{
+    position:absolute;
+    top:12px;
+    right:14px;
+    width:29px;
+    height:29px;
+    padding:0;
+    border:0;
+    background:transparent;
+    color:#5c6c82;
+    font-size:1.25rem;
+    cursor:pointer;
+}
+
+.priority-popover-close:hover{
+    color:#102448;
+}
+
+.priority-popover-arrow{
+    position:absolute;
+    left:var(--priority-arrow-left,50%);
+    bottom:-9px;
+    width:18px;
+    height:18px;
+    background:#ffffff;
+    border-right:1px solid #d8e5f2;
+    border-bottom:1px solid #d8e5f2;
+    transform:translateX(-50%) rotate(45deg);
+}
+
+.priority-popover.below .priority-popover-arrow{
+    top:-9px;
+    bottom:auto;
+    border-right:0;
+    border-bottom:0;
+    border-left:1px solid #d8e5f2;
+    border-top:1px solid #d8e5f2;
+}
+
+@media(max-width:650px){
+    .priority-popover{
+        position:fixed;
+        left:50% !important;
+        top:50% !important;
+        width:min(390px,calc(100vw - 30px));
+        max-height:80vh;
+        overflow:auto;
+        transform:translate(-50%,-48%) scale(.99);
+    }
+
+    .priority-popover.open{
+        transform:translate(-50%,-50%) scale(1);
+    }
+
+    .priority-popover-arrow{
+        display:none;
+    }
+}
+

@@ -275,21 +275,40 @@
           <h2>First 90 Days</h2>
         </div>
         <div class="days-grid">
-          <article>
+          <article class="priority-card" tabindex="0" role="button" aria-expanded="false"
+            data-number="01"
+            data-title="Align with GOAA's Strategic Objectives"
+            data-description="Understand and align with GOAA's strategic objectives and long-term vision. Meet with key stakeholders, assess current marketing efforts, identify what is working, and determine where the strongest opportunities exist.">
             <b>01–30</b>
-            <h3>Listen &amp; Learn</h3>
-            <p>Listen, learn, and understand current priorities.</p>
+            <h3>Align &amp; Understand</h3>
+            <p>Understand GOAA's strategic objectives, stakeholders, and current marketing priorities.</p>
           </article>
-          <article>
+
+          <article class="priority-card" tabindex="0" role="button" aria-expanded="false"
+            data-number="02"
+            data-title="Strengthen Strategic Partnerships"
+            data-description="Strengthen relationships with airlines, tourism organizations, community leaders, and local businesses to help promote Orlando, expand collaboration, and support passenger growth.">
             <b>31–60</b>
-            <h3>Assess &amp; Align</h3>
-            <p>Review campaigns, KPIs, and stakeholder feedback.</p>
+            <h3>Strengthen Partnerships</h3>
+            <p>Deepen relationships with airlines, tourism partners, community leaders, and local businesses.</p>
           </article>
-          <article>
+
+          <article class="priority-card" tabindex="0" role="button" aria-expanded="false"
+            data-number="03"
+            data-title="Build a Data-Driven Marketing Strategy"
+            data-description="Establish meaningful performance metrics and use analytics to evaluate campaign performance, customer behavior, and return on investment so resources remain aligned with GOAA's goals and marketing can continuously improve.">
             <b>61–90</b>
-            <h3>Prioritize &amp; Launch</h3>
-            <p>Present strategic priorities, establish dashboards, and launch initial improvements.</p>
+            <h3>Build the Data Strategy</h3>
+            <p>Establish meaningful KPIs and use analytics to guide marketing decisions and investment.</p>
           </article>
+        </div>
+
+        <div class="priority-popover" id="priority-popover" role="dialog" aria-hidden="true">
+          <button class="priority-popover-close" type="button" aria-label="Close priority details">×</button>
+          <div class="priority-popover-number"></div>
+          <h3 class="priority-popover-title"></h3>
+          <p class="priority-popover-text"></p>
+          <span class="priority-popover-arrow" aria-hidden="true"></span>
         </div>
       </div>
     </section>
@@ -672,6 +691,112 @@
       });
       window.addEventListener('resize',()=>{
         if(activeCard && popover.classList.contains('open')) positionPopover(activeCard);
+      });
+    })();
+  </script>
+
+
+  <script>
+    (() => {
+      const cards = Array.from(document.querySelectorAll('.priority-card'));
+      const popover = document.getElementById('priority-popover');
+      if (!cards.length || !popover) return;
+
+      const numberEl = popover.querySelector('.priority-popover-number');
+      const titleEl = popover.querySelector('.priority-popover-title');
+      const textEl = popover.querySelector('.priority-popover-text');
+      const closeBtn = popover.querySelector('.priority-popover-close');
+      let activeCard = null;
+
+      function positionPopover(card) {
+        const section = card.closest('#first-90-days');
+        const sectionRect = section.getBoundingClientRect();
+        const cardRect = card.getBoundingClientRect();
+
+        popover.style.left = '0px';
+        popover.style.top = '0px';
+
+        const popRect = popover.getBoundingClientRect();
+        let left = cardRect.left - sectionRect.left + cardRect.width / 2 - popRect.width / 2;
+        let top = cardRect.top - sectionRect.top - popRect.height - 18;
+
+        const minLeft = 18;
+        const maxLeft = sectionRect.width - popRect.width - 18;
+        left = Math.max(minLeft, Math.min(left, maxLeft));
+
+        const placeBelow = top < 80;
+        if (placeBelow) {
+          top = cardRect.bottom - sectionRect.top + 18;
+          popover.classList.add('below');
+        } else {
+          popover.classList.remove('below');
+        }
+
+        popover.style.left = `${left}px`;
+        popover.style.top = `${top}px`;
+
+        const cardCenter = cardRect.left - sectionRect.left + cardRect.width / 2;
+        const arrowLeft = Math.max(22, Math.min(cardCenter - left, popRect.width - 22));
+        popover.style.setProperty('--priority-arrow-left', `${arrowLeft}px`);
+      }
+
+      function openPopover(card) {
+        cards.forEach(c => {
+          c.classList.remove('active');
+          c.setAttribute('aria-expanded', 'false');
+        });
+
+        activeCard = card;
+        card.classList.add('active');
+        card.setAttribute('aria-expanded', 'true');
+
+        numberEl.textContent = card.dataset.number;
+        titleEl.textContent = card.dataset.title;
+        textEl.textContent = card.dataset.description;
+
+        popover.classList.add('open');
+        popover.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(() => positionPopover(card));
+      }
+
+      function closePopover() {
+        if (activeCard) {
+          activeCard.classList.remove('active');
+          activeCard.setAttribute('aria-expanded', 'false');
+        }
+        activeCard = null;
+        popover.classList.remove('open', 'below');
+        popover.setAttribute('aria-hidden', 'true');
+      }
+
+      cards.forEach(card => {
+        card.addEventListener('click', e => {
+          e.stopPropagation();
+          if (activeCard === card && popover.classList.contains('open')) closePopover();
+          else openPopover(card);
+        });
+
+        card.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openPopover(card);
+          }
+        });
+      });
+
+      closeBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        closePopover();
+      });
+
+      popover.addEventListener('click', e => e.stopPropagation());
+      document.addEventListener('click', closePopover);
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closePopover();
+      });
+
+      window.addEventListener('resize', () => {
+        if (activeCard && popover.classList.contains('open')) positionPopover(activeCard);
       });
     })();
   </script>
