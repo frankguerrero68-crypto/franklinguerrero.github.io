@@ -207,14 +207,48 @@
           <p>Illustrative KPIs</p>
         </div>
         <div class="kpi-grid">
-          <article><span>↗</span><h3>Passenger Growth</h3></article>
-          <article><span>◎</span><h3>Customer Satisfaction</h3></article>
-          <article><span>◈</span><h3>Brand Awareness</h3></article>
-          <article><span>$</span><h3>Campaign ROI</h3></article>
-          <article><span>⌁</span><h3>Digital Engagement</h3></article>
-          <article><span>♧</span><h3>Community Partnerships</h3></article>
-          <article><span>▥</span><h3>Website Performance</h3></article>
-          <article><span>◫</span><h3>Executive Dashboard Reporting</h3></article>
+          <article class="kpi-card" tabindex="0" role="button" aria-expanded="false"
+            data-kpi="passenger" data-title="Passenger Growth" data-subtitle="Illustrative 12-month passenger index">
+            <span>↗</span><h3>Passenger Growth</h3>
+          </article>
+          <article class="kpi-card" tabindex="0" role="button" aria-expanded="false"
+            data-kpi="satisfaction" data-title="Customer Satisfaction" data-subtitle="Illustrative satisfaction trend">
+            <span>◎</span><h3>Customer Satisfaction</h3>
+          </article>
+          <article class="kpi-card" tabindex="0" role="button" aria-expanded="false"
+            data-kpi="awareness" data-title="Brand Awareness" data-subtitle="Illustrative brand awareness by quarter">
+            <span>◈</span><h3>Brand Awareness</h3>
+          </article>
+          <article class="kpi-card" tabindex="0" role="button" aria-expanded="false"
+            data-kpi="roi" data-title="Campaign ROI" data-subtitle="Illustrative return by campaign">
+            <span>$</span><h3>Campaign ROI</h3>
+          </article>
+          <article class="kpi-card" tabindex="0" role="button" aria-expanded="false"
+            data-kpi="digital" data-title="Digital Engagement" data-subtitle="Illustrative engagement trend">
+            <span>⌁</span><h3>Digital Engagement</h3>
+          </article>
+          <article class="kpi-card" tabindex="0" role="button" aria-expanded="false"
+            data-kpi="partnerships" data-title="Community Partnerships" data-subtitle="Illustrative partnership growth">
+            <span>♧</span><h3>Community Partnerships</h3>
+          </article>
+          <article class="kpi-card" tabindex="0" role="button" aria-expanded="false"
+            data-kpi="website" data-title="Website Performance" data-subtitle="Illustrative traffic and conversion trend">
+            <span>▥</span><h3>Website Performance</h3>
+          </article>
+          <article class="kpi-card" tabindex="0" role="button" aria-expanded="false"
+            data-kpi="dashboard" data-title="Executive Dashboard Reporting" data-subtitle="Illustrative executive scorecard">
+            <span>◫</span><h3>Executive Dashboard Reporting</h3>
+          </article>
+        </div>
+
+        <div class="kpi-chart-popover" id="kpi-chart-popover" role="dialog" aria-hidden="true">
+          <button class="kpi-chart-close" type="button" aria-label="Close KPI chart">×</button>
+          <div class="kpi-chart-kicker">SAMPLE EXECUTIVE VIEW</div>
+          <h3 class="kpi-chart-title"></h3>
+          <p class="kpi-chart-subtitle"></p>
+          <div class="kpi-chart-stage" aria-label="Illustrative KPI chart"></div>
+          <p class="kpi-chart-note">Illustrative data for portfolio demonstration only — not actual GOAA performance.</p>
+          <span class="kpi-chart-arrow" aria-hidden="true"></span>
         </div>
       </div>
     </section>
@@ -403,6 +437,241 @@
 
       window.addEventListener('resize', () => {
         if (activeCard && popover.classList.contains('open')) positionPopover(activeCard);
+      });
+    })();
+  </script>
+
+
+  <script>
+    (() => {
+      const cards = Array.from(document.querySelectorAll('.kpi-card'));
+      const popover = document.getElementById('kpi-chart-popover');
+      if (!cards.length || !popover) return;
+
+      const titleEl = popover.querySelector('.kpi-chart-title');
+      const subtitleEl = popover.querySelector('.kpi-chart-subtitle');
+      const stage = popover.querySelector('.kpi-chart-stage');
+      const closeBtn = popover.querySelector('.kpi-chart-close');
+      let activeCard = null;
+
+      const data = {
+        passenger: {
+          type: 'line',
+          labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+          values: [82,85,88,87,91,94,97,99,98,102,105,109],
+          suffix: ''
+        },
+        satisfaction: {
+          type: 'line',
+          labels: ['Q1','Q2','Q3','Q4'],
+          values: [84,87,89,92],
+          suffix: '%'
+        },
+        awareness: {
+          type: 'bars',
+          labels: ['Q1','Q2','Q3','Q4'],
+          values: [61,68,74,81],
+          suffix: '%'
+        },
+        roi: {
+          type: 'bars',
+          labels: ['A','B','C','D','E'],
+          values: [118,142,131,167,154],
+          suffix: '%'
+        },
+        digital: {
+          type: 'line',
+          labels: ['Jan','Mar','May','Jul','Sep','Nov'],
+          values: [42,48,53,61,68,76],
+          suffix: '%'
+        },
+        partnerships: {
+          type: 'bars',
+          labels: ['2023','2024','2025','2026'],
+          values: [18,24,31,39],
+          suffix: ''
+        },
+        website: {
+          type: 'dual',
+          labels: ['Jan','Mar','May','Jul','Sep','Nov'],
+          values: [72,78,84,91,97,106],
+          values2: [2.8,3.1,3.4,3.8,4.1,4.5],
+          suffix: 'k',
+          suffix2: '%'
+        },
+        dashboard: {
+          type: 'scorecard',
+          metrics: [
+            ['Passenger Growth','+6.8%','On Track'],
+            ['Customer Satisfaction','92%','Strong'],
+            ['Campaign ROI','154%','Above Target'],
+            ['Digital Engagement','+18%','Improving']
+          ]
+        }
+      };
+
+      function svgLine(labels, values, suffix='', values2=null, suffix2='') {
+        const w = 430, h = 210, left = 38, right = 20, top = 18, bottom = 34;
+        const max = Math.max(...values) * 1.08;
+        const min = Math.min(...values) * .92;
+        const x = i => left + i * ((w-left-right)/(values.length-1));
+        const y = v => top + (max-v) * ((h-top-bottom)/(max-min || 1));
+        const points = values.map((v,i)=>`${x(i)},${y(v)}`).join(' ');
+
+        let grid = '';
+        for(let i=0;i<4;i++){
+          const gy = top + i*((h-top-bottom)/3);
+          grid += `<line x1="${left}" y1="${gy}" x2="${w-right}" y2="${gy}" class="chart-grid"/>`;
+        }
+
+        let labelsSvg = labels.map((lab,i)=>`<text x="${x(i)}" y="${h-10}" text-anchor="middle" class="chart-label">${lab}</text>`).join('');
+        let dots = values.map((v,i)=>`<circle cx="${x(i)}" cy="${y(v)}" r="3.2" class="chart-dot"/><text x="${x(i)}" y="${y(v)-9}" text-anchor="middle" class="chart-value">${v}${suffix}</text>`).join('');
+
+        let second = '';
+        if(values2){
+          const max2 = Math.max(...values2)*1.08, min2 = Math.min(...values2)*.92;
+          const y2 = v => top + (max2-v) * ((h-top-bottom)/(max2-min2 || 1));
+          const p2 = values2.map((v,i)=>`${x(i)},${y2(v)}`).join(' ');
+          second = `<polyline points="${p2}" class="chart-line secondary"/>` +
+                   values2.map((v,i)=>`<circle cx="${x(i)}" cy="${y2(v)}" r="2.7" class="chart-dot secondary"/>`).join('');
+        }
+
+        return `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Illustrative line chart">
+          ${grid}
+          <polyline points="${points}" class="chart-line"/>
+          ${second}
+          ${dots}
+          ${labelsSvg}
+        </svg>`;
+      }
+
+      function svgBars(labels, values, suffix='') {
+        const w=430,h=210,left=28,right=18,top=20,bottom=36;
+        const max=Math.max(...values)*1.15;
+        const slot=(w-left-right)/values.length;
+        const barW=Math.min(44,slot*.55);
+        let grid='';
+        for(let i=0;i<4;i++){
+          const gy=top+i*((h-top-bottom)/3);
+          grid += `<line x1="${left}" y1="${gy}" x2="${w-right}" y2="${gy}" class="chart-grid"/>`;
+        }
+        let bars='';
+        values.forEach((v,i)=>{
+          const bh=(v/max)*(h-top-bottom);
+          const bx=left+i*slot+(slot-barW)/2;
+          const by=h-bottom-bh;
+          bars += `<rect x="${bx}" y="${by}" width="${barW}" height="${bh}" rx="5" class="chart-bar"/>
+                   <text x="${bx+barW/2}" y="${by-8}" text-anchor="middle" class="chart-value">${v}${suffix}</text>
+                   <text x="${bx+barW/2}" y="${h-11}" text-anchor="middle" class="chart-label">${labels[i]}</text>`;
+        });
+        return `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Illustrative bar chart">${grid}${bars}</svg>`;
+      }
+
+      function scorecard(metrics){
+        return `<div class="executive-scorecard">` + metrics.map((m,i)=>`
+          <div class="scorecard-item">
+            <div class="scorecard-label">${m[0]}</div>
+            <div class="scorecard-value">${m[1]}</div>
+            <div class="scorecard-status"><span></span>${m[2]}</div>
+          </div>`).join('') + `</div>`;
+      }
+
+      function renderChart(key){
+        const d=data[key];
+        if(!d) return '';
+        if(d.type==='line') return svgLine(d.labels,d.values,d.suffix);
+        if(d.type==='bars') return svgBars(d.labels,d.values,d.suffix);
+        if(d.type==='dual') return svgLine(d.labels,d.values,d.suffix,d.values2,d.suffix2);
+        if(d.type==='scorecard') return scorecard(d.metrics);
+        return '';
+      }
+
+      function positionPopover(card){
+        const section = card.closest('#executive-kpis');
+        const sectionRect = section.getBoundingClientRect();
+        const cardRect = card.getBoundingClientRect();
+
+        popover.style.left='0px';
+        popover.style.top='0px';
+
+        const popRect = popover.getBoundingClientRect();
+        let left = cardRect.left - sectionRect.left + cardRect.width/2 - popRect.width/2;
+        let top = cardRect.top - sectionRect.top - popRect.height - 18;
+
+        const minLeft=18;
+        const maxLeft=sectionRect.width-popRect.width-18;
+        left=Math.max(minLeft,Math.min(left,maxLeft));
+
+        const placeBelow = top < 78;
+        if(placeBelow){
+          top=cardRect.bottom-sectionRect.top+18;
+          popover.classList.add('below');
+        }else{
+          popover.classList.remove('below');
+        }
+
+        popover.style.left=`${left}px`;
+        popover.style.top=`${top}px`;
+
+        const cardCenter = cardRect.left - sectionRect.left + cardRect.width/2;
+        const arrowLeft=Math.max(22,Math.min(cardCenter-left,popRect.width-22));
+        popover.style.setProperty('--kpi-arrow-left',`${arrowLeft}px`);
+      }
+
+      function openPopover(card){
+        cards.forEach(c=>{
+          c.classList.remove('active');
+          c.setAttribute('aria-expanded','false');
+        });
+
+        activeCard=card;
+        card.classList.add('active');
+        card.setAttribute('aria-expanded','true');
+
+        titleEl.textContent=card.dataset.title;
+        subtitleEl.textContent=card.dataset.subtitle;
+        stage.innerHTML=renderChart(card.dataset.kpi);
+
+        popover.classList.add('open');
+        popover.setAttribute('aria-hidden','false');
+        requestAnimationFrame(()=>positionPopover(card));
+      }
+
+      function closePopover(){
+        if(activeCard){
+          activeCard.classList.remove('active');
+          activeCard.setAttribute('aria-expanded','false');
+        }
+        activeCard=null;
+        popover.classList.remove('open','below');
+        popover.setAttribute('aria-hidden','true');
+      }
+
+      cards.forEach(card=>{
+        card.addEventListener('click',e=>{
+          e.stopPropagation();
+          if(activeCard===card && popover.classList.contains('open')) closePopover();
+          else openPopover(card);
+        });
+        card.addEventListener('keydown',e=>{
+          if(e.key==='Enter' || e.key===' '){
+            e.preventDefault();
+            openPopover(card);
+          }
+        });
+      });
+
+      closeBtn.addEventListener('click',e=>{
+        e.stopPropagation();
+        closePopover();
+      });
+      popover.addEventListener('click',e=>e.stopPropagation());
+      document.addEventListener('click',closePopover);
+      document.addEventListener('keydown',e=>{
+        if(e.key==='Escape') closePopover();
+      });
+      window.addEventListener('resize',()=>{
+        if(activeCard && popover.classList.contains('open')) positionPopover(activeCard);
       });
     })();
   </script>
