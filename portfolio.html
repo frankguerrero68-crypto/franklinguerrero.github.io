@@ -139,13 +139,62 @@
           <h2>Executive Decision-Making Framework</h2>
         </div>
         <div class="decision-grid">
-          <article><b>01</b><span>Listen to stakeholders.</span></article>
-          <article><b>02</b><span>Gather and analyze data.</span></article>
-          <article><b>03</b><span>Align with organizational strategy.</span></article>
-          <article><b>04</b><span>Evaluate risk and opportunity.</span></article>
-          <article><b>05</b><span>Prioritize initiatives.</span></article>
-          <article><b>06</b><span>Execute accountability.</span></article>
-          <article><b>07</b><span>Measure outcomes and continuously improve.</span></article>
+          <article class="decision-card" tabindex="0" role="button" aria-expanded="false"
+            data-number="01"
+            data-title="Listen to stakeholders."
+            data-description="Engage the people affected by the decision to understand priorities, concerns, expectations, and operational realities before moving forward.">
+            <b>01</b><span>Listen to stakeholders.</span>
+          </article>
+
+          <article class="decision-card" tabindex="0" role="button" aria-expanded="false"
+            data-number="02"
+            data-title="Gather and analyze data."
+            data-description="Collect relevant quantitative and qualitative data to understand the situation, identify patterns, and uncover the insights needed to make an informed decision.">
+            <b>02</b><span>Gather and analyze data.</span>
+          </article>
+
+          <article class="decision-card" tabindex="0" role="button" aria-expanded="false"
+            data-number="03"
+            data-title="Align with organizational strategy."
+            data-description="Confirm that the decision supports the organization's mission, priorities, long-term objectives, and desired business outcomes.">
+            <b>03</b><span>Align with organizational strategy.</span>
+          </article>
+
+          <article class="decision-card" tabindex="0" role="button" aria-expanded="false"
+            data-number="04"
+            data-title="Evaluate risk and opportunity."
+            data-description="Assess potential risks, benefits, dependencies, and opportunities so leadership can balance value creation with responsible decision-making.">
+            <b>04</b><span>Evaluate risk and opportunity.</span>
+          </article>
+
+          <article class="decision-card" tabindex="0" role="button" aria-expanded="false"
+            data-number="05"
+            data-title="Prioritize initiatives."
+            data-description="Focus resources on the initiatives with the strongest strategic alignment, business value, urgency, and potential organizational impact.">
+            <b>05</b><span>Prioritize initiatives.</span>
+          </article>
+
+          <article class="decision-card" tabindex="0" role="button" aria-expanded="false"
+            data-number="06"
+            data-title="Execute accountability."
+            data-description="Translate the decision into action with clear ownership, responsibilities, timelines, expectations, and executive visibility.">
+            <b>06</b><span>Execute accountability.</span>
+          </article>
+
+          <article class="decision-card" tabindex="0" role="button" aria-expanded="false"
+            data-number="07"
+            data-title="Measure outcomes and continuously improve."
+            data-description="Track results against defined measures, learn from outcomes, and adjust the strategy or execution as new information becomes available.">
+            <b>07</b><span>Measure outcomes and continuously improve.</span>
+          </article>
+        </div>
+
+        <div class="decision-popover" id="decision-popover" role="dialog" aria-hidden="true">
+          <button class="decision-popover-close" type="button" aria-label="Close definition">×</button>
+          <div class="decision-popover-number"></div>
+          <h3 class="decision-popover-title"></h3>
+          <p class="decision-popover-text"></p>
+          <span class="decision-popover-arrow" aria-hidden="true"></span>
         </div>
       </div>
     </section>
@@ -247,5 +296,116 @@
   </footer>
 
   <script src="script.js"></script>
+
+  <script>
+    (() => {
+      const cards = Array.from(document.querySelectorAll('.decision-card'));
+      const popover = document.getElementById('decision-popover');
+      if (!cards.length || !popover) return;
+
+      const numberEl = popover.querySelector('.decision-popover-number');
+      const titleEl = popover.querySelector('.decision-popover-title');
+      const textEl = popover.querySelector('.decision-popover-text');
+      const closeBtn = popover.querySelector('.decision-popover-close');
+      let activeCard = null;
+
+      function positionPopover(card) {
+        const section = card.closest('.portfolio-dark');
+        const sectionRect = section.getBoundingClientRect();
+        const cardRect = card.getBoundingClientRect();
+
+        // Measure after content is visible.
+        popover.style.left = '0px';
+        popover.style.top = '0px';
+
+        const popRect = popover.getBoundingClientRect();
+        let left = cardRect.left - sectionRect.left + (cardRect.width / 2) - (popRect.width / 2);
+        let top = cardRect.top - sectionRect.top - popRect.height - 18;
+
+        const minLeft = 18;
+        const maxLeft = sectionRect.width - popRect.width - 18;
+        left = Math.max(minLeft, Math.min(left, maxLeft));
+
+        // If there isn't enough room above, place it below.
+        const placeBelow = top < 78;
+        if (placeBelow) {
+          top = cardRect.bottom - sectionRect.top + 18;
+          popover.classList.add('below');
+        } else {
+          popover.classList.remove('below');
+        }
+
+        popover.style.left = `${left}px`;
+        popover.style.top = `${top}px`;
+
+        const cardCenter = cardRect.left - sectionRect.left + (cardRect.width / 2);
+        const arrowLeft = Math.max(20, Math.min(cardCenter - left, popRect.width - 20));
+        popover.style.setProperty('--arrow-left', `${arrowLeft}px`);
+      }
+
+      function openPopover(card) {
+        cards.forEach(c => {
+          c.classList.remove('active');
+          c.setAttribute('aria-expanded', 'false');
+        });
+
+        activeCard = card;
+        card.classList.add('active');
+        card.setAttribute('aria-expanded', 'true');
+
+        numberEl.textContent = card.dataset.number;
+        titleEl.textContent = card.dataset.title;
+        textEl.textContent = card.dataset.description;
+
+        popover.classList.add('open');
+        popover.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(() => positionPopover(card));
+      }
+
+      function closePopover() {
+        if (activeCard) {
+          activeCard.classList.remove('active');
+          activeCard.setAttribute('aria-expanded', 'false');
+        }
+        activeCard = null;
+        popover.classList.remove('open', 'below');
+        popover.setAttribute('aria-hidden', 'true');
+      }
+
+      cards.forEach(card => {
+        card.addEventListener('click', (event) => {
+          event.stopPropagation();
+          if (activeCard === card && popover.classList.contains('open')) {
+            closePopover();
+          } else {
+            openPopover(card);
+          }
+        });
+
+        card.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openPopover(card);
+          }
+        });
+      });
+
+      closeBtn.addEventListener('click', (event) => {
+        event.stopPropagation();
+        closePopover();
+      });
+
+      popover.addEventListener('click', event => event.stopPropagation());
+      document.addEventListener('click', closePopover);
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') closePopover();
+      });
+
+      window.addEventListener('resize', () => {
+        if (activeCard && popover.classList.contains('open')) positionPopover(activeCard);
+      });
+    })();
+  </script>
+
 </body>
 </html>

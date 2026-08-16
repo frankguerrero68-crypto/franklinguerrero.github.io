@@ -943,3 +943,136 @@ html {
 #closing-statement {
   scroll-margin-top: 90px;
 }
+
+/* =========================================================
+   CLICKABLE DECISION-MAKING FRAMEWORK
+   Adds compact definition bubbles without changing the existing layout.
+   ========================================================= */
+
+.portfolio-dark{
+    position:relative;
+    overflow:visible;
+}
+
+.decision-card{
+    cursor:pointer;
+    position:relative;
+    transition:border-color .18s ease, box-shadow .18s ease, background .18s ease, transform .18s ease;
+    outline:none;
+}
+
+.decision-card:hover,
+.decision-card:focus-visible,
+.decision-card.active{
+    border-color:#35a6ff !important;
+    background:rgba(255,255,255,.07) !important;
+    box-shadow:0 0 0 1px rgba(53,166,255,.28), 0 10px 24px rgba(0,0,0,.12);
+}
+
+.decision-card:focus-visible{
+    transform:translateY(-2px);
+}
+
+.decision-popover{
+    position:absolute;
+    z-index:20;
+    width:min(295px,calc(100vw - 36px));
+    padding:22px 24px 23px;
+    border-radius:8px;
+    background:#ffffff;
+    color:#0d1a35;
+    box-shadow:0 18px 44px rgba(0,0,0,.28);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translateY(5px) scale(.985);
+    transition:opacity .16s ease, transform .16s ease, visibility .16s ease;
+}
+
+.decision-popover.open{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translateY(0) scale(1);
+}
+
+.decision-popover-number{
+    color:#2d8ff0;
+    font-size:1.55rem;
+    line-height:1;
+    font-weight:800;
+    margin-bottom:9px;
+}
+
+.decision-popover-title{
+    margin:0 26px 10px 0;
+    color:#102448;
+    font-size:.93rem;
+    line-height:1.35;
+}
+
+.decision-popover-text{
+    margin:0;
+    color:#324762;
+    font-size:.77rem;
+    line-height:1.65;
+}
+
+.decision-popover-close{
+    position:absolute;
+    top:11px;
+    right:13px;
+    width:28px;
+    height:28px;
+    padding:0;
+    border:0;
+    background:transparent;
+    color:#5a6a80;
+    font-size:1.25rem;
+    line-height:1;
+    cursor:pointer;
+}
+
+.decision-popover-close:hover{
+    color:#102448;
+}
+
+.decision-popover-arrow{
+    position:absolute;
+    left:var(--arrow-left,50%);
+    bottom:-9px;
+    width:18px;
+    height:18px;
+    background:#ffffff;
+    transform:translateX(-50%) rotate(45deg);
+}
+
+.decision-popover.below .decision-popover-arrow{
+    top:-9px;
+    bottom:auto;
+}
+
+@media(max-width:950px){
+    .decision-popover{
+        width:min(280px,calc(100vw - 32px));
+    }
+}
+
+@media(max-width:650px){
+    .decision-popover{
+        position:fixed;
+        left:50% !important;
+        top:50% !important;
+        width:min(320px,calc(100vw - 34px));
+        transform:translate(-50%,-48%) scale(.985);
+    }
+
+    .decision-popover.open{
+        transform:translate(-50%,-50%) scale(1);
+    }
+
+    .decision-popover-arrow{
+        display:none;
+    }
+}
+
