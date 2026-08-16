@@ -1454,3 +1454,152 @@ html {
     }
 }
 
+/* === Homepage section Back to Top links ===
+   Added only as navigation controls; existing section layouts remain unchanged.
+*/
+#about,
+#expertise,
+#achievements,
+#experience,
+#education {
+    position: relative;
+}
+
+.section-back-top,
+.section-back-top:link,
+.section-back-top:visited {
+    position: absolute;
+    right: max(22px, calc((100% - 1180px) / 2));
+    bottom: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 10px;
+    border: 1px solid rgba(21, 101, 192, .28);
+    border-radius: 4px;
+    background: rgba(255,255,255,.78);
+    color: #1565c0 !important;
+    -webkit-text-fill-color: #1565c0 !important;
+    text-decoration: none;
+    font-size: .68rem;
+    font-weight: 700;
+    line-height: 1;
+    z-index: 3;
+    transition: background .16s ease, border-color .16s ease, transform .16s ease;
+}
+
+.section-back-top:hover,
+.section-back-top:active,
+.section-back-top:focus-visible {
+    background: #1565c0;
+    border-color: #1565c0;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    transform: translateY(-1px);
+    outline: none;
+}
+
+/* Keep the control readable over the dark contact/education section. */
+#education .section-back-top,
+#education .section-back-top:link,
+#education .section-back-top:visited {
+    background: rgba(5,24,51,.82);
+    border-color: rgba(84,183,255,.55);
+    color: #54b7ff !important;
+    -webkit-text-fill-color: #54b7ff !important;
+}
+
+#education .section-back-top:hover,
+#education .section-back-top:active,
+#education .section-back-top:focus-visible {
+    background: #1565c0;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+@media (max-width: 650px) {
+    .section-back-top,
+    .section-back-top:link,
+    .section-back-top:visited {
+        right: 14px;
+        bottom: 9px;
+        padding: 6px 8px;
+        font-size: .63rem;
+    }
+}
+
+/* === Portfolio section Back to Top links ===
+   Navigation controls only; existing portfolio design remains unchanged.
+*/
+.portfolio-page #executive-profile,
+.portfolio-page #executive-initiatives,
+.portfolio-page #leadership-advantage,
+.portfolio-page #decision-framework,
+.portfolio-page #executive-kpis,
+.portfolio-page #strategic-partnerships,
+.portfolio-page #first-90-days,
+.portfolio-page #leadership-principles,
+.portfolio-page #closing-statement {
+    position: relative;
+}
+
+.portfolio-section-back-top,
+.portfolio-section-back-top:link,
+.portfolio-section-back-top:visited {
+    position: absolute;
+    right: max(22px, calc((100% - 1180px) / 2));
+    bottom: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 10px;
+    border: 1px solid rgba(21, 101, 192, .28);
+    border-radius: 4px;
+    background: rgba(255,255,255,.82);
+    color: #1565c0 !important;
+    -webkit-text-fill-color: #1565c0 !important;
+    text-decoration: none;
+    font-size: .68rem;
+    font-weight: 700;
+    line-height: 1;
+    z-index: 8;
+    transition: background .16s ease, border-color .16s ease, transform .16s ease;
+}
+
+.portfolio-section-back-top:hover,
+.portfolio-section-back-top:active,
+.portfolio-section-back-top:focus-visible {
+    background: #1565c0;
+    border-color: #1565c0;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    transform: translateY(-1px);
+    outline: none;
+}
+
+.portfolio-page #decision-framework .portfolio-section-back-top,
+.portfolio-page #closing-statement .portfolio-section-back-top {
+    background: rgba(5,24,51,.82);
+    border-color: rgba(84,183,255,.55);
+    color: #54b7ff !important;
+    -webkit-text-fill-color: #54b7ff !important;
+}
+
+.portfolio-page #decision-framework .portfolio-section-back-top:hover,
+.portfolio-page #closing-statement .portfolio-section-back-top:hover {
+    background: #1565c0;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+@media (max-width: 650px) {
+    .portfolio-section-back-top,
+    .portfolio-section-back-top:link,
+    .portfolio-section-back-top:visited {
+        right: 14px;
+        bottom: 9px;
+        padding: 6px 8px;
+        font-size: .63rem;
+    }
+}
+
