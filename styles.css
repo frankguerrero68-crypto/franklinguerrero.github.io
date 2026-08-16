@@ -1603,3 +1603,114 @@ html {
     }
 }
 
+/* === Interactive Leadership Principles === */
+.portfolio-page #leadership-principles {
+    position: relative;
+}
+
+.principle-pill {
+    appearance: none;
+    border: 1px solid rgba(21, 101, 192, .18);
+    background: rgba(255,255,255,.92);
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    border-radius: 999px;
+    padding: 10px 16px;
+    transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease, background .16s ease;
+}
+
+.principle-pill:hover,
+.principle-pill:focus-visible,
+.principle-pill.active {
+    transform: translateY(-2px);
+    border-color: rgba(21, 101, 192, .48);
+    box-shadow: 0 8px 20px rgba(10, 36, 68, .10);
+    outline: none;
+}
+
+.principle-pill.active {
+    background: rgba(84, 183, 255, .10);
+}
+
+.principle-popover {
+    position: absolute;
+    width: min(360px, calc(100vw - 36px));
+    padding: 18px 20px 17px;
+    background: #ffffff;
+    border: 1px solid rgba(21, 101, 192, .22);
+    border-radius: 12px;
+    box-shadow: 0 18px 42px rgba(8, 31, 61, .18);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5px);
+    transition: opacity .16s ease, transform .16s ease, visibility .16s ease;
+    z-index: 20;
+}
+
+.principle-popover.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.principle-popover-title {
+    margin: 0 28px 7px 0;
+    font-size: 1rem;
+    line-height: 1.25;
+}
+
+.principle-popover-text {
+    margin: 0;
+    font-size: .83rem;
+    line-height: 1.55;
+}
+
+.principle-popover-close {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    border: 0;
+    background: transparent;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    opacity: .6;
+}
+
+.principle-popover-close:hover {
+    opacity: 1;
+}
+
+.principle-popover-arrow {
+    position: absolute;
+    left: var(--principle-arrow-left, 50%);
+    bottom: -7px;
+    width: 14px;
+    height: 14px;
+    background: #ffffff;
+    border-right: 1px solid rgba(21, 101, 192, .22);
+    border-bottom: 1px solid rgba(21, 101, 192, .22);
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.principle-popover.below .principle-popover-arrow {
+    top: -7px;
+    bottom: auto;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 1px solid rgba(21, 101, 192, .22);
+    border-top: 1px solid rgba(21, 101, 192, .22);
+}
+
+@media (max-width: 650px) {
+    .principle-pill {
+        padding: 9px 13px;
+    }
+
+    .principle-popover {
+        width: min(330px, calc(100vw - 28px));
+        padding: 16px 18px 15px;
+    }
+}
+

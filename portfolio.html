@@ -334,13 +334,48 @@
           <h2>Leadership Principles</h2>
         </div>
         <div class="principles-row">
-          <span>Lead with integrity.</span>
-          <span>Communicate openly.</span>
-          <span>Build relationships.</span>
-          <span>Empower teams.</span>
-          <span>Make data-informed decisions.</span>
-          <span>Focus on the customer.</span>
-          <span>Measure results.</span>
+          <button class="principle-pill" type="button"
+            data-title="Lead with integrity."
+            data-description="Make decisions ethically, communicate truthfully, and build trust through consistent actions and accountability.">
+            Lead with integrity.
+          </button>
+          <button class="principle-pill" type="button"
+            data-title="Communicate openly."
+            data-description="Create clarity through transparent communication, active listening, and timely information sharing across teams and stakeholders.">
+            Communicate openly.
+          </button>
+          <button class="principle-pill" type="button"
+            data-title="Build relationships."
+            data-description="Develop trusted partnerships by understanding stakeholder needs, creating alignment, and investing in long-term collaboration.">
+            Build relationships.
+          </button>
+          <button class="principle-pill" type="button"
+            data-title="Empower teams."
+            data-description="Give people clear direction, ownership, support, and the confidence to make decisions and deliver meaningful results.">
+            Empower teams.
+          </button>
+          <button class="principle-pill" type="button"
+            data-title="Make data-informed decisions."
+            data-description="Use relevant data, business context, and professional judgment to guide decisions and improve strategic outcomes.">
+            Make data-informed decisions.
+          </button>
+          <button class="principle-pill" type="button"
+            data-title="Focus on the customer."
+            data-description="Keep customer needs, expectations, and experience at the center of strategy, execution, and continuous improvement.">
+            Focus on the customer.
+          </button>
+          <button class="principle-pill" type="button"
+            data-title="Measure results."
+            data-description="Define meaningful outcomes, track performance, and use results to strengthen accountability and continuously improve.">
+            Measure results.
+          </button>
+        </div>
+
+        <div class="principle-popover" id="principle-popover" role="dialog" aria-hidden="true">
+          <button class="principle-popover-close" type="button" aria-label="Close leadership principle">×</button>
+          <h3 class="principle-popover-title"></h3>
+          <p class="principle-popover-text"></p>
+          <span class="principle-popover-arrow" aria-hidden="true"></span>
         </div>
       </div>
     
@@ -815,6 +850,103 @@
 
       window.addEventListener('resize', () => {
         if (activeCard && popover.classList.contains('open')) positionPopover(activeCard);
+      });
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const pills = Array.from(document.querySelectorAll('.principle-pill'));
+      const popover = document.getElementById('principle-popover');
+      if (!pills.length || !popover) return;
+
+      const titleEl = popover.querySelector('.principle-popover-title');
+      const textEl = popover.querySelector('.principle-popover-text');
+      const closeBtn = popover.querySelector('.principle-popover-close');
+      let activePill = null;
+
+      function positionPopover(pill) {
+        const section = pill.closest('#leadership-principles');
+        const sectionRect = section.getBoundingClientRect();
+        const pillRect = pill.getBoundingClientRect();
+
+        popover.style.left = '0px';
+        popover.style.top = '0px';
+
+        const popRect = popover.getBoundingClientRect();
+        let left = pillRect.left - sectionRect.left + pillRect.width / 2 - popRect.width / 2;
+        let top = pillRect.top - sectionRect.top - popRect.height - 16;
+
+        const minLeft = 18;
+        const maxLeft = sectionRect.width - popRect.width - 18;
+        left = Math.max(minLeft, Math.min(left, maxLeft));
+
+        const placeBelow = top < 72;
+        if (placeBelow) {
+          top = pillRect.bottom - sectionRect.top + 16;
+          popover.classList.add('below');
+        } else {
+          popover.classList.remove('below');
+        }
+
+        popover.style.left = `${left}px`;
+        popover.style.top = `${top}px`;
+
+        const pillCenter = pillRect.left - sectionRect.left + pillRect.width / 2;
+        const arrowLeft = Math.max(22, Math.min(pillCenter - left, popRect.width - 22));
+        popover.style.setProperty('--principle-arrow-left', `${arrowLeft}px`);
+      }
+
+      function openPopover(pill) {
+        pills.forEach(p => {
+          p.classList.remove('active');
+          p.setAttribute('aria-expanded', 'false');
+        });
+
+        activePill = pill;
+        pill.classList.add('active');
+        pill.setAttribute('aria-expanded', 'true');
+
+        titleEl.textContent = pill.dataset.title;
+        textEl.textContent = pill.dataset.description;
+
+        popover.classList.add('open');
+        popover.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(() => positionPopover(pill));
+      }
+
+      function closePopover() {
+        if (activePill) {
+          activePill.classList.remove('active');
+          activePill.setAttribute('aria-expanded', 'false');
+        }
+        activePill = null;
+        popover.classList.remove('open', 'below');
+        popover.setAttribute('aria-hidden', 'true');
+      }
+
+      pills.forEach(pill => {
+        pill.setAttribute('aria-expanded', 'false');
+        pill.addEventListener('click', e => {
+          e.stopPropagation();
+          if (activePill === pill && popover.classList.contains('open')) closePopover();
+          else openPopover(pill);
+        });
+      });
+
+      closeBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        closePopover();
+      });
+
+      popover.addEventListener('click', e => e.stopPropagation());
+      document.addEventListener('click', closePopover);
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closePopover();
+      });
+
+      window.addEventListener('resize', () => {
+        if (activePill && popover.classList.contains('open')) positionPopover(activePill);
       });
     })();
   </script>
