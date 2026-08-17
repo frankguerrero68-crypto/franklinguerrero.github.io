@@ -544,7 +544,7 @@ html {
 
 /* Preserve final portrait treatment */
 .executive-portrait img {
-    opacity: .90 !important;
+    opacity: .83 !important;
     filter: brightness(.90) contrast(1.03) saturate(.95)
             drop-shadow(0 18px 24px rgba(0,0,0,.22)) !important;
 }
