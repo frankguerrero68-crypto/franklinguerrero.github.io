@@ -1714,3 +1714,23 @@ html {
     }
 }
 
+
+/* === MOBILE PORTRAIT VISIBILITY FIX ===
+   Mobile only. Desktop portrait remains unchanged.
+*/
+@media (max-width: 700px) {
+    .executive-portrait {
+        right: -12px !important;
+        top: 160px !important;
+        bottom: auto !important;
+        width: 295px !important;
+        height: 420px !important;
+        opacity: 1 !important;
+    }
+
+    .executive-portrait img {
+        opacity: .88 !important;
+        filter: brightness(.90) contrast(1.03) saturate(.95)
+                drop-shadow(0 18px 24px rgba(0,0,0,.18)) !important;
+    }
+}
