@@ -1714,23 +1714,124 @@ html {
     }
 }
 
-
-/* === MOBILE PORTRAIT VISIBILITY FIX ===
-   Mobile only. Desktop portrait remains unchanged.
-*/
+/* =========================================================
+   MOBILE HERO LAYOUT REFINEMENT ONLY
+   Desktop/tablet (701px and above) remain unchanged.
+   ========================================================= */
 @media (max-width: 700px) {
+
+    /* Keep the compact mobile hero, but give text and portrait separate space */
+    .executive-hero {
+        min-height: 860px !important;
+        padding: 0 !important;
+        background-position: 60% center !important;
+    }
+
+    .executive-hero-layout {
+        min-height: 860px !important;
+        padding-top: 108px !important;
+        display: block !important;
+        position: relative !important;
+    }
+
+    /* Keep all hero wording safely on the left, clear of the face */
+    .executive-copy {
+        position: relative !important;
+        z-index: 4 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 20px 0 0 !important;
+        text-align: left !important;
+    }
+
+    .hero-kicker {
+        position: relative !important;
+        z-index: 5 !important;
+        max-width: 58% !important;
+        white-space: normal !important;
+        font-size: .63rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 16px !important;
+    }
+
+    .executive-copy h1 {
+        position: relative !important;
+        z-index: 5 !important;
+        max-width: 58% !important;
+        font-size: clamp(2.05rem, 10vw, 3rem) !important;
+        line-height: 1.03 !important;
+        margin-bottom: 18px !important;
+    }
+
+    .executive-copy .accent-line {
+        position: relative !important;
+        z-index: 5 !important;
+        margin-left: 0 !important;
+    }
+
+    .executive-copy p {
+        position: relative !important;
+        z-index: 5 !important;
+        max-width: 58% !important;
+        font-size: .88rem !important;
+        line-height: 1.58 !important;
+    }
+
+    .executive-copy .hero-actions {
+        position: relative !important;
+        z-index: 6 !important;
+        width: 58% !important;
+        max-width: 320px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+        margin-top: 22px !important;
+    }
+
+    .executive-copy .btn {
+        width: 100% !important;
+        min-width: 0 !important;
+        justify-content: center !important;
+    }
+
+    /* Move portrait to the right so it no longer sits behind Strategic Partner */
     .executive-portrait {
-        right: -12px !important;
-        top: 160px !important;
+        position: absolute !important;
+        z-index: 2 !important;
+        right: -18px !important;
+        top: 122px !important;
         bottom: auto !important;
-        width: 295px !important;
-        height: 420px !important;
+        width: 300px !important;
+        height: 610px !important;
+        margin: 0 !important;
+        transform: none !important;
         opacity: 1 !important;
+        pointer-events: none !important;
     }
 
     .executive-portrait img {
-        opacity: .88 !important;
-        filter: brightness(.90) contrast(1.03) saturate(.95)
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        object-position: center top !important;
+        opacity: .92 !important;
+        filter: brightness(.92) contrast(1.03) saturate(.96)
                 drop-shadow(0 18px 24px rgba(0,0,0,.18)) !important;
+        -webkit-mask-image: none !important;
+        mask-image: none !important;
+    }
+
+    /* Darken the left side slightly for text legibility without affecting desktop */
+    .executive-hero:before {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(2,13,31,.97) 0%,
+                rgba(2,13,31,.92) 42%,
+                rgba(2,13,31,.50) 68%,
+                rgba(2,13,31,.16) 100%
+            ) !important;
     }
 }
+
