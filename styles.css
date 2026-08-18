@@ -1846,3 +1846,14 @@ html {
     }
 }
 
+/* =========================================================
+   PHONE ONLY: hide homepage portrait
+   Desktop portrait remains completely unchanged.
+   Homepage background image remains unchanged.
+   ========================================================= */
+@media (max-width: 700px) and (hover: none) and (pointer: coarse) {
+    .executive-portrait {
+        display: none !important;
+    }
+}
+
