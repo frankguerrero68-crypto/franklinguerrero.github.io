@@ -1839,7 +1839,7 @@ html {
    Desktop remains unchanged. Keeps the existing blue executive treatment
    without the computer/chair background behind the portrait.
 */
-@media (max-width: 700px) {
+@media (max-width: 700px) and (hover: none) and (pointer: coarse) {
     .executive-hero {
         background-image:
             linear-gradient(
@@ -1851,6 +1851,16 @@ html {
         background-position: center !important;
         background-size: cover !important;
         background-repeat: no-repeat !important;
+    }
+}
+
+/* =========================================================
+   FINAL MOBILE-ONLY PORTRAIT IMAGE
+   Desktop portrait source and desktop styling are untouched.
+   ========================================================= */
+@media (max-width: 700px) and (hover: none) and (pointer: coarse) {
+    .executive-portrait img {
+        content: url("assets/profile-transparent-mobile.png") !important;
     }
 }
 
