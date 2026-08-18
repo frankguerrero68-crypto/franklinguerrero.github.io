@@ -1857,3 +1857,55 @@ html {
     }
 }
 
+/* =========================================================
+   MOBILE HOMEPAGE HERO POLISH
+   Phone-only refinements. Desktop remains unchanged.
+   ========================================================= */
+@media (max-width: 700px) and (hover: none) and (pointer: coarse) {
+
+    /* Keep the existing airport image, but reveal more detail on the right. */
+    .executive-hero {
+        background-position: 66% center !important;
+    }
+
+    /* Preserve readability on the left while allowing the background
+       to show through more clearly toward the right side. */
+    .executive-hero:before {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(2,13,31,.98) 0%,
+                rgba(2,13,31,.94) 36%,
+                rgba(3,22,48,.78) 58%,
+                rgba(4,37,78,.40) 78%,
+                rgba(4,37,78,.18) 100%
+            ) !important;
+    }
+
+    /* Give the supporting copy a little more presence on mobile. */
+    .executive-copy p {
+        font-size: .94rem !important;
+        line-height: 1.62 !important;
+        color: rgba(255,255,255,.90) !important;
+        max-width: 62% !important;
+    }
+
+    /* Strengthen the strategic-partner accent without changing layout. */
+    .executive-copy .accent-line {
+        color: #72e6c1 !important;
+        text-shadow: 0 0 18px rgba(114,230,193,.16) !important;
+    }
+
+    /* Add a subtle executive-style edge to the primary action. */
+    .executive-copy .btn {
+        box-shadow:
+            0 10px 24px rgba(0,0,0,.24),
+            0 0 0 1px rgba(255,255,255,.05) inset !important;
+    }
+
+    .executive-copy .btn:hover,
+    .executive-copy .btn:focus {
+        transform: translateY(-1px) !important;
+    }
+}
+
