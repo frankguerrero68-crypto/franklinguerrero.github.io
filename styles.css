@@ -2012,3 +2012,93 @@ color:#98FF98!important;
 @media (max-width:700px){
 .executive-copy .btn-portfolio::after{display:none}
 }
+
+
+/* === Expanded Professional Experience Timeline === */
+.experience-grid {
+    align-items: start;
+}
+
+.timeline article {
+    margin-bottom: 28px;
+}
+
+.timeline article:last-child {
+    margin-bottom: 0;
+}
+
+.timeline .earlier-career {
+    padding-bottom: 2px;
+}
+
+@media (min-width: 951px) {
+    .experience-section .airport-card {
+        margin-top: 58px;
+        position: sticky;
+        top: 110px;
+    }
+}
+
+@media (max-width: 950px) {
+    .experience-section .airport-card {
+        margin-top: 6px;
+    }
+}
+
+
+/* === Organization photos inside Professional Experience ===
+   Compact thumbnails preserve the existing section height and timeline layout. */
+.experience-with-photo {
+    display: grid;
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+}
+.experience-with-photo .dot {
+    left: -46px;
+}
+.experience-org-photo {
+    width: 112px;
+    height: 76px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
+    box-shadow: 0 5px 14px rgba(5,22,48,.14);
+    display: block;
+}
+.experience-org-copy {
+    min-width: 0;
+}
+@media (max-width: 600px) {
+    .experience-with-photo {
+        grid-template-columns: 88px minmax(0, 1fr);
+        gap: 12px;
+    }
+    .experience-org-photo {
+        width: 88px;
+        height: 64px;
+    }
+}
+
+
+/* === FINAL PROFESSIONAL EXPERIENCE LAYOUT ===
+   Three matching organization thumbnails; no separate large image column. */
+.experience-section .experience-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 1180px;
+}
+.experience-section .timeline {
+    max-width: 780px;
+}
+.experience-section .airport-card {
+    display: none !important;
+}
+@media (min-width: 951px) {
+    .experience-with-photo {
+        grid-template-columns: 112px minmax(0, 1fr);
+    }
+    .experience-org-photo {
+        width: 112px;
+        height: 76px;
+    }
+}
