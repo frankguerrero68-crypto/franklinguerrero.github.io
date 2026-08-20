@@ -2335,3 +2335,36 @@ color:#98FF98!important;
     .case-study-summary-card{padding:24px}
     .case-study-takeaway blockquote{font-size:1.15rem}
 }
+
+/* === MOBILE BRAND VISIBILITY FIX ===
+   Restore FRANKLIN / GUERRERO in the upper-left mobile header.
+   Desktop styling and all other mobile layout remain unchanged.
+*/
+@media (max-width: 650px) {
+    .executive-topbar .executive-brand {
+        display: block !important;
+        visibility: visible !important;
+    }
+
+    .executive-topbar .executive-brand strong {
+        display: flex !important;
+        flex-direction: column !important;
+        line-height: 1.02 !important;
+        font-size: 1rem !important;
+        letter-spacing: .16em !important;
+    }
+
+    .executive-topbar .executive-brand strong span {
+        display: inline !important;
+        visibility: visible !important;
+        color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
+    }
+
+    .executive-topbar .executive-brand strong span:last-child {
+        color: #1565c0 !important;
+        -webkit-text-fill-color: #1565c0 !important;
+        margin-top: 4px !important;
+    }
+}
+
