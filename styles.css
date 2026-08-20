@@ -1988,3 +1988,43 @@ html {
     }
 }
 
+
+/* HERO PORTFOLIO CTA — only new hero button */
+.executive-copy .btn-portfolio,
+.executive-copy .btn-portfolio:link,
+.executive-copy .btn-portfolio:visited{
+background:rgba(1,12,30,.42);
+border:1px solid #98FF98;
+color:#98FF98!important;
+-webkit-text-fill-color:#98FF98!important;
+}
+.executive-copy .btn-portfolio:hover,
+.executive-copy .btn-portfolio:active,
+.executive-copy .btn-portfolio:focus{
+background:rgba(152,255,152,.10);
+border-color:#98FF98;
+color:#98FF98!important;
+-webkit-text-fill-color:#98FF98!important;
+}
+.portfolio-btn-icon{color:#98FF98;-webkit-text-fill-color:#98FF98;font-size:1rem}
+.executive-copy .hero-actions{position:relative}
+@media (min-width:701px){
+.executive-copy .btn-portfolio::after{
+content:"Come check out my portfolio!";
+position:absolute;
+top:calc(100% + 8px);
+right:0;
+width:190px;
+text-align:center;
+color:#98FF98;
+-webkit-text-fill-color:#98FF98;
+font-size:.72rem;
+font-weight:600;
+font-style:italic;
+pointer-events:none;
+}
+.executive-copy .hero-actions{margin-bottom:28px}
+}
+@media (max-width:700px){
+.executive-copy .btn-portfolio::after{display:none}
+}
