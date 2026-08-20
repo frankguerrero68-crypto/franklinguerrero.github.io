@@ -2028,3 +2028,82 @@ pointer-events:none;
 @media (max-width:700px){
 .executive-copy .btn-portfolio::after{display:none}
 }
+
+
+/* =========================================================
+   FINAL HERO BUTTON SIZE OVERRIDE
+   Makes only the homepage hero CTA buttons smaller.
+   ========================================================= */
+.executive-copy .hero-actions .btn,
+.executive-copy .hero-actions .btn:link,
+.executive-copy .hero-actions .btn:visited {
+    width: auto !important;
+    min-width: 135px !important;
+    padding: 9px 12px !important;
+    font-size: .78rem !important;
+}
+
+/* Portfolio button is slightly shorter because its label is shorter. */
+.executive-copy .hero-actions .btn-portfolio,
+.executive-copy .hero-actions .btn-portfolio:link,
+.executive-copy .hero-actions .btn-portfolio:visited {
+    width: auto !important;
+    min-width: 125px !important;
+    padding: 9px 12px !important;
+    font-size: .78rem !important;
+}
+
+
+/* =========================================================
+   EXTRA-SMALL HERO BUTTONS — FINAL OVERRIDE
+   ========================================================= */
+.executive-copy .hero-actions .btn,
+.executive-copy .hero-actions .btn:link,
+.executive-copy .hero-actions .btn:visited {
+    width: auto !important;
+    min-width: 115px !important;
+    padding: 7px 10px !important;
+    font-size: .72rem !important;
+}
+
+.executive-copy .hero-actions .btn-portfolio,
+.executive-copy .hero-actions .btn-portfolio:link,
+.executive-copy .hero-actions .btn-portfolio:visited {
+    width: auto !important;
+    min-width: 105px !important;
+    padding: 7px 10px !important;
+    font-size: .72rem !important;
+}
+
+
+/* =========================================================
+   ULTRA-COMPACT HERO BUTTONS — FINAL OVERRIDE
+   ========================================================= */
+.executive-copy .hero-actions .btn,
+.executive-copy .hero-actions .btn:link,
+.executive-copy .hero-actions .btn:visited {
+    width: auto !important;
+    min-width: 95px !important;
+    padding: 6px 8px !important;
+    font-size: .68rem !important;
+    gap: 7px !important;
+}
+
+.executive-copy .hero-actions .btn-portfolio,
+.executive-copy .hero-actions .btn-portfolio:link,
+.executive-copy .hero-actions .btn-portfolio:visited {
+    width: auto !important;
+    min-width: 90px !important;
+    padding: 6px 8px !important;
+    font-size: .68rem !important;
+}
+
+
+/* Remove Portfolio invitation text */
+.portfolio-invite,
+.portfolio-invite::before,
+.portfolio-invite::after,
+.executive-copy .btn-portfolio::after {
+    display: none !important;
+    content: none !important;
+}
