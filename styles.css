@@ -2368,3 +2368,64 @@ color:#98FF98!important;
     }
 }
 
+
+
+/* === 2026 Hero Portrait Swap Only ===
+   Uses the new transparent patterned-shirt portrait.
+   No other homepage layout, colors, typography, spacing, navigation, or sections are changed.
+*/
+@media (min-width: 951px) {
+    .executive-portrait {
+        width: min(36vw, 445px) !important;
+        height: 515px !important;
+        transform: translate(-205px, 0) !important;
+    }
+
+    .executive-portrait img {
+        opacity: .75 !important;
+        filter: brightness(.90) contrast(1.03) saturate(.95)
+                drop-shadow(0 18px 24px rgba(0,0,0,.22)) !important;
+        object-fit: contain !important;
+        object-position: center bottom !important;
+    }
+}
+
+@media (max-width: 950px) and (min-width: 701px) {
+    .executive-portrait {
+        width: 325px !important;
+        height: 490px !important;
+        margin-right: -20px !important;
+    }
+}
+
+/* === FINAL HERO PORTRAIT POSITION FIX ONLY ===
+   Moves the new portrait right so it no longer overlaps the CTA buttons.
+   No other website styling is changed.
+*/
+@media (min-width: 951px) {
+    .executive-portrait {
+        transform: translate(-55px, 0) !important;
+    }
+}
+
+/* === FINAL HERO PORTRAIT WRIST VISIBILITY ONLY ===
+   Keeps the approved hero design and horizontal portrait placement.
+   Slightly reduces and raises only the desktop portrait so more of the
+   crossed arms/wrist remain visible above the bottom edge of the hero.
+*/
+@media (min-width: 951px) {
+    .executive-portrait {
+        width: min(33vw, 410px) !important;
+        height: 475px !important;
+        transform: translate(-55px, -8px) !important;
+    }
+
+    .executive-portrait img {
+        opacity: .75 !important;
+        filter: brightness(.90) contrast(1.03) saturate(.95)
+                drop-shadow(0 18px 24px rgba(0,0,0,.22)) !important;
+        object-fit: contain !important;
+        object-position: center bottom !important;
+    }
+}
+
