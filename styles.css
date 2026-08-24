@@ -2429,3 +2429,28 @@ color:#98FF98!important;
     }
 }
 
+/* === FINAL PORTRAIT SIZE — MATCH REFERENCE SCREENSHOT ===
+   Portrait only. No changes to navigation, hero copy, buttons, background,
+   sections, colors, or other page styling.
+*/
+@media (min-width: 951px) {
+    .executive-portrait {
+        width: min(29vw, 355px) !important;
+        height: 410px !important;
+        transform: translate(-55px, 0) !important;
+        align-self: end !important;
+        margin-bottom: 0 !important;
+    }
+
+    .executive-portrait img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        object-position: center bottom !important;
+        opacity: .83 !important;
+        filter: brightness(.82) contrast(.98) saturate(.90) !important;
+        -webkit-mask-image: none !important;
+        mask-image: none !important;
+    }
+}
+
