@@ -2455,11 +2455,29 @@ color:#98FF98!important;
 }
 
 
-/* === FINAL HOMEPAGE BACKGROUND IMAGE POSITION ===
-   Move the desktop hero/background picture lower without changing sizing or layout.
+/* === HOMEPAGE PORTRAIT ENLARGEMENT (DESKTOP) ===
+   Approximately 25% larger than the previous 355px x 410px limits.
+   Other website elements and tablet/mobile styling remain unchanged.
 */
-@media (min-width: 701px) {
-    .executive-hero {
-        background-position: center 25% !important;
+@media (min-width: 951px) {
+    .executive-portrait {
+        width: min(36.25vw, 444px) !important;
+        height: 513px !important;
+        transform: translate(-55px, 0) !important;
+    }
+    .executive-portrait img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        object-position: center bottom !important;
+    }
+}
+
+/* === HOMEPAGE PORTRAIT BRIGHTNESS REFINEMENT ===
+   Desktop only: preserve existing dimensions, positioning and opacity.
+*/
+@media (min-width: 951px) {
+    .executive-portrait img {
+        filter: brightness(1) contrast(.98) saturate(.90) !important;
     }
 }
