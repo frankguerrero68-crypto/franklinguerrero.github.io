@@ -2481,3 +2481,20 @@ color:#98FF98!important;
         filter: brightness(1) contrast(.98) saturate(.90) !important;
     }
 }
+
+/* === HERO BACKGROUND VERTICAL POSITION ONLY ===
+   Adjust the background focal point to a balanced 30% position.
+   This affects the background only, not the foreground content.
+   Text, portrait, buttons, navigation and mobile layouts are unchanged.
+*/
+@media (min-width: 951px) {
+    .executive-hero {
+        background-position: center 30% !important;
+    }
+}
+
+/* Fine-tune office background slightly lower than the approved 65% version.
+   Foreground text, buttons, portrait and mobile layout remain unchanged. */
+@media (min-width: 951px) {
+  .executive-hero { background-position: center 60% !important; }
+}
