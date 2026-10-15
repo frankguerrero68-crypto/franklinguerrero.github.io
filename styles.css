@@ -2498,3 +2498,8 @@ color:#98FF98!important;
 @media (min-width: 951px) {
   .executive-hero { background-position: center 60% !important; }
 }
+
+/* Live/local consistency: explicit final desktop background alignment. */
+@media (min-width: 951px) {
+  .hero.executive-hero { background-position: center 60% !important; }
+}
